@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Photo Gallery App',
       theme: ThemeData(visualDensity: VisualDensity.adaptivePlatformDensity),
       home: Navigator(
-        pages: [],
+        pages: [MaterialPage(child: LoginPage())],
         onPopPage: (route, result) => route.didPop(result),
       ),
     );
