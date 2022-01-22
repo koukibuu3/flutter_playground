@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _LoginPageState();
+  State<StatefulWidget> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
@@ -15,21 +16,21 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
           minimum: EdgeInsets.symmetric(horizontal: 40),
           child: Stack(children: [
-            // Login Form
-            _loginForm(),
+            // Sign Up Form
+            _signUpForm(),
 
-            // Sign Up Button
+            // Login Button
             Container(
               alignment: Alignment.bottomCenter,
               child: TextButton(
                   onPressed: () {},
-                  child: const Text('Don\'t have an account? Sign up.')),
+                  child: const Text('Already have an account? Login.')),
             )
           ])),
     );
   }
 
-  Widget _loginForm() {
+  Widget _signUpForm() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -38,6 +39,13 @@ class _LoginPageState extends State<LoginPage> {
           controller: _usernameController,
           decoration: const InputDecoration(
               icon: Icon(Icons.person), labelText: 'Username'),
+        ),
+
+        // Email TextField
+        TextField(
+          controller: _emailController,
+          decoration:
+              const InputDecoration(icon: Icon(Icons.mail), labelText: 'Email'),
         ),
 
         // Password TextField
