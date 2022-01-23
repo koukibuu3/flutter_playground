@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/auth_service.dart';
 import 'package:flutter_playground/login_page.dart';
 import 'package:flutter_playground/sign_up_page.dart';
+import 'package:flutter_playground/verification_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -47,6 +48,14 @@ class _MyAppState extends State<MyApp> {
                             didProviderCredentials:
                                 _authService.signUpWithCredencials,
                             shouldShowLogin: _authService.showLogin)),
+
+                  // Show Verification Code Page
+                  if (snapshot.data!.authFlowStatus ==
+                      AuthFlowStatus.verification)
+                    MaterialPage(
+                        child: VerificationPage(
+                            didProvideVerificationCode:
+                                _authService.verifyCode)),
                 ],
                 onPopPage: (route, result) => route.didPop(result),
               );
