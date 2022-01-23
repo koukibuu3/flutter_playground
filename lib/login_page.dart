@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
+  final VoidCallback shoudShowSignUp;
+
+  const LoginPage({Key? key, required this.shoudShowSignUp}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _LoginPageState();
 }
@@ -13,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          minimum: EdgeInsets.symmetric(horizontal: 40),
+          minimum: const EdgeInsets.symmetric(horizontal: 40),
           child: Stack(children: [
             // Login Form
             _loginForm(),
@@ -22,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               alignment: Alignment.bottomCenter,
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: widget.shoudShowSignUp,
                   child: const Text('Don\'t have an account? Sign up.')),
             )
           ])),

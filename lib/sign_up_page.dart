@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
+  final VoidCallback shouldShowLogin;
+
+  const SignUpPage({Key? key, required this.shouldShowLogin}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _SignUpPageState();
 }
@@ -23,7 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Container(
               alignment: Alignment.bottomCenter,
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: widget.shouldShowLogin,
                   child: const Text('Already have an account? Login.')),
             )
           ])),
@@ -57,20 +61,22 @@ class _SignUpPageState extends State<SignUpPage> {
           keyboardType: TextInputType.visiblePassword,
         ),
 
-        // Login Button
+        // Sign Up Button
         TextButton(
-          onPressed: _login,
-          child: const Text('Login'),
+          onPressed: _signUp,
+          child: const Text('Sign Up'),
         ),
       ],
     );
   }
 
-  void _login() {
+  void _signUp() {
     final username = _usernameController.text.trim();
+    final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
 
     print('username: $username');
+    print('email: $email');
     print('password: $password');
   }
 }
