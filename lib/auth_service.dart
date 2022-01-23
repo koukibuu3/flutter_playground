@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter_playground/auth_credentials.dart';
+
 enum AuthFlowStatus { login, signup, verification, session }
 
 class AuthState {
@@ -18,6 +20,16 @@ class AuthService {
 
   void showLogin() {
     final state = AuthState(authFlowStatus: AuthFlowStatus.login);
+    authStateController.add(state);
+  }
+
+  void loginWithCredencials(AuthCredentials credentials) {
+    final state = AuthState(authFlowStatus: AuthFlowStatus.session);
+    authStateController.add(state);
+  }
+
+  void signUpWithCredencials(SignUpCredentials credentials) {
+    final state = AuthState(authFlowStatus: AuthFlowStatus.verification);
     authStateController.add(state);
   }
 }
